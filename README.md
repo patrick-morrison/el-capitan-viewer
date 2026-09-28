@@ -29,7 +29,3 @@ npm run build
 GitHub Pages serves the committed `docs/` directory from `main`. After editing, build and copy `dist/` into `docs/`, retaining `.nojekyll`. Relative asset URLs support the repository subpath.
 
 BelowJS 1.9.1 is GPL-3.0-or-later; Three.js is MIT. Source, package lock and third-party notices are included. Interface code is provided under GPL-3.0-or-later; this does not relicense model or drawing assets.
-
-## Casual password screen
-
-Enter `girt` to open the viewer. This is only a client-side privacy screen, not access control. Repository files and direct model URLs remain public. The viewer and model are loaded after entering the password.
