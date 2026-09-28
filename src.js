@@ -38,3 +38,15 @@ function responsiveCamera(){const cam=viewer.getCamera();if(!cam)return;cam.fov=
 
 
 
+
+// In fly mode the wheel blends overlays; orbit mode retains its normal zoom.
+let flyBlend=null;
+viewer.on('fly-mode-change',()=>{flyBlend=null});
+document.addEventListener('wheel',event=>{
+ if(!viewer.flyControls?.pointerLocked)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ const delta=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?innerHeight:1);
+ if(!Number.isFinite(delta)||delta===0)return;
+ flyBlend=THREE.MathUtils.clamp((flyBlend??Number($('#blend').value))+THREE.MathUtils.clamp(delta*.06,-8,8),0,100);
+ $('#blend').value=String(Math.round(flyBlend));blend();
+},{capture:true,passive:false});
